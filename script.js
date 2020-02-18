@@ -2,6 +2,27 @@
 let backG = document.querySelector('header');
 let taskGoods = {};
 
+function calc() {
+    for (let keys in taskGoods) {
+        let arr = ['cheese', 'meat', 'tomato', 'onion'];
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += taskGoods[keys]['composition'][arr[i]];
+        }
+        taskGoods[keys].price = (sum * 33);
+        taskGoods[keys].cal = (sum * 75);
+
+        if (sum === 7) {
+            // obj.conponents.cheese = 1;
+            // obj.conponents.meat = 2;
+            // obj.conponents.tomato = 4;
+            // taskGoods[keys].price = (sum * 33);
+            // taskGoods[keys].cal = (sum * 75);
+        }
+    }
+    console.log( taskGoods);
+}
+
 function createCards() {
     backG.style.backgroundPositionY = 'bottom';
     backG.style.backgroundPositionX = 'center';
@@ -23,84 +44,116 @@ function createCards() {
         let container = document.createElement('div');
         container.classList.add("container");
 
+        let btnWrapperGrid = document.createElement('div');
+        btnWrapperGrid.classList.add('btnWrapperGrid');
+
+        let btnNameGrid = document.createElement('div');
+        btnNameGrid.classList.add('nameGrid');
+        btnNameGrid.innerText = "Применить";
+
+        let formGrid = document.createElement('div');
+        formGrid.classList.add('formGrid');
+
+        for (let i = 0; i < 4; i++) {
+
+            let arrGrid = ['cheese', 'meat', 'tomato', 'onion'];
+            let input = document.createElement('input');
+            input.type = "checkbox";
+            input.name = arrGrid[i];
+            input.title = arrGrid[i];
+            input.classList.add(`${arrGrid[i]}${i + 1}`);
+            formGrid.append(input);
+
+            let lableGrid = document.createElement('lable');
+            lableGrid.innerText = `${arrGrid[i]}`;
+            formGrid.append(lableGrid);
+
+            let br1 = document.createElement('br');
+            formGrid.append(br1);
+        }
+        btnWrapperGrid.append(formGrid);
+        btnWrapperGrid.append(btnNameGrid);
+
+        globalContainer.append(btnWrapperGrid);
+        document.querySelector('.nameGrid').onclick = function () {
+            // for ( let keys in taskGoods){
+            //     let arr = ['cheese', 'meat', 'tomato', 'onion'];
+            //     let sum = 0;
+            //     for (let i = 0; i < arr.length; i++){
+            //         sum += taskGoods[keys]['composition'][arr[i]];
+            //
+            //     }
+            //     console.log(sum);
+            //
+            //
+            // }
+        };
+
+
         function drow() {
             let wrapper = document.createElement('div');
             wrapper.classList.add("goods_wrapper");
             container.append(wrapper);
-            let caunterItems = 1;
+            let counterItems = 1;
 
             for (let list in taskGoods) {
                 let item = document.createElement('div');
                 item.classList.add("card");
-                item.classList.add(`item_${caunterItems}`);
+                item.classList.add(`item_${counterItems}`);
 
                 let front = document.createElement('div');
                 front.classList.add("front");
-                front.classList.add(`front_${caunterItems}`);
+                front.classList.add(`front_${counterItems}`);
 
+                let p = document.createElement('p');
+                p.classList.add("p_name");
 
-
-                    let p = document.createElement('p');
-                    p.classList.add("p_name");
-
-                    p.innerText = `Пицца:${taskGoods[list]['name']}`;
-                    front.append(p);
-
-
-
-
+                p.innerText = `Пицца:${taskGoods[list]['name']}`;
+                front.append(p);
 
                 let form = document.createElement('form');
 
-                        for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < 4; i++) {
 
-                            let arr = ['cheese', 'meat', 'tomato', 'onion'];
-                            let input = document.createElement('input');
-                            input.type = "checkbox";
-                            input.name = arr[i];
-                            input.title = arr[i];
-                            input.classList.add(`${arr[i]}${i + 1}`);
-                            form.append(input);
+                    let arr = ['cheese', 'meat', 'tomato', 'onion'];
+                    let input = document.createElement('input');
+                    input.type = "checkbox";
+                    input.name = arr[i];
+                    input.title = arr[i];
+                    input.classList.add(`${arr[i]}${i + 1}`);
+                    form.append(input);
 
-                            let lable = document.createElement('lable');
-                            lable.innerText = `${arr[i]}`;
-                            form.append(lable);
+                    let lable = document.createElement('lable');
+                    lable.innerText = `${arr[i]}`;
+                    form.append(lable);
 
-                            let br1 = document.createElement('br');
-                            form.append(br1);
-                        }
+                    let br1 = document.createElement('br');
+                    form.append(br1);
+                }
 
                 let priceName = document.createElement('span');
                 priceName.classList.add('priceName');
-                priceName.innerText = 'Цена:';
+                priceName.innerText =  `Цена: ${taskGoods[list]['price']}`;
                 front.append(priceName);
 
                 let calName = document.createElement('span');
                 calName.classList.add('calName');
-                calName.innerText = 'Калории:';
+                calName.innerText = `Калории: ${taskGoods[list]['cal']} грн`;
                 front.append(calName);
 
+                let button = document.createElement('button');
+                button.classList.add(`btnForm_${counterItems}`);
+                button.classList.add(`btnForm`);
+                button.innerText = "Выбрать";
 
-
-                    let button = document.createElement('button');
-                    button.classList.add(`btnForm_${caunterItems}`);
-                    button.classList.add(`btnForm`);
-                    button.innerText = "Выбрать";
-
-
-
-                    let br = document.createElement('br');
-                    front.append(button);
-                    front.append(br);
-                    front.append(form);
-
-
-
-
+                let br = document.createElement('br');
+                front.append(button);
+                front.append(br);
+                front.append(form);
 
                 let back = document.createElement('div');
                 back.classList.add("back");
-                back.classList.add(`back_${caunterItems}`);
+                back.classList.add(`back_${counterItems}`);
                 let backImg = document.createElement('div');
                 backImg.classList.add("backImg");
                 backImg.style.backgroundImage = 'url("img/123.jpg")';
@@ -109,142 +162,146 @@ function createCards() {
                 item.append(front);
                 item.append(back);
                 wrapper.append(item);
-                caunterItems++;
+                counterItems++;
             }
+
         }
+
         globalContainer.append(container);
+        calc();
         drow();
         rotate();
-         function rotate(){
-             document.querySelector('.btnForm_1').onclick = function () {
-                 document.querySelector('.front_1').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_1').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_1').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_1').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_2').onclick = function () {
-                 document.querySelector('.front_2').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_2').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_2').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_2').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_3').onclick = function () {
-                 document.querySelector('.front_3').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_3').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_3').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_3').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_4').onclick = function () {
-                 document.querySelector('.front_4').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_4').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_4').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_4').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_5').onclick = function () {
-                 document.querySelector('.front_5').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_5').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_5').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_5').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_6').onclick = function () {
-                 document.querySelector('.front_6').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_6').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_6').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_6').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_7').onclick = function () {
-                 document.querySelector('.front_7').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_7').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_7').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_7').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_8').onclick = function () {
-                 document.querySelector('.front_8').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_8').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_8').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_8').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_9').onclick = function () {
-                 document.querySelector('.front_9').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_9').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_9').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_9').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_10').onclick = function () {
-                 document.querySelector('.front_10').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_10').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_10').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_10').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_11').onclick = function () {
-                 document.querySelector('.front_11').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_11').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_11').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_11').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_12').onclick = function () {
-                 document.querySelector('.front_12').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_12').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_12').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_12').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_13').onclick = function () {
-                 document.querySelector('.front_13').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_13').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_13').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_13').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_14').onclick = function () {
-                 document.querySelector('.front_14').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_14').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_14').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_14').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_15').onclick = function () {
-                 document.querySelector('.front_15').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_15').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_15').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_15').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-             document.querySelector('.btnForm_16').onclick = function () {
-                 document.querySelector('.front_16').style.transform = "rotateY(180deg)";
-                 document.querySelector('.back_16').style.transform = "rotateY(360deg)";
-                 setTimeout(()=>{
-                     document.querySelector('.front_16').style.transform = "rotateY(0deg)";
-                     document.querySelector('.back_16').style.transform = "rotateY(180deg)";
-                 },2000)
-             };
-         }
+
+        function rotate() {
+            document.querySelector('.btnForm_1').onclick = function () {
+                document.querySelector('.front_1').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_1').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_1').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_1').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_2').onclick = function () {
+                document.querySelector('.front_2').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_2').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_2').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_2').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_3').onclick = function () {
+                document.querySelector('.front_3').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_3').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_3').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_3').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_4').onclick = function () {
+                document.querySelector('.front_4').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_4').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_4').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_4').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_5').onclick = function () {
+                document.querySelector('.front_5').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_5').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_5').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_5').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_6').onclick = function () {
+                document.querySelector('.front_6').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_6').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_6').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_6').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_7').onclick = function () {
+                document.querySelector('.front_7').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_7').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_7').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_7').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_8').onclick = function () {
+                document.querySelector('.front_8').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_8').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_8').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_8').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_9').onclick = function () {
+                document.querySelector('.front_9').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_9').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_9').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_9').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_10').onclick = function () {
+                document.querySelector('.front_10').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_10').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_10').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_10').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_11').onclick = function () {
+                document.querySelector('.front_11').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_11').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_11').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_11').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_12').onclick = function () {
+                document.querySelector('.front_12').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_12').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_12').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_12').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_13').onclick = function () {
+                document.querySelector('.front_13').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_13').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_13').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_13').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_14').onclick = function () {
+                document.querySelector('.front_14').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_14').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_14').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_14').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_15').onclick = function () {
+                document.querySelector('.front_15').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_15').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_15').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_15').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+            document.querySelector('.btnForm_16').onclick = function () {
+                document.querySelector('.front_16').style.transform = "rotateY(180deg)";
+                document.querySelector('.back_16').style.transform = "rotateY(360deg)";
+                setTimeout(() => {
+                    document.querySelector('.front_16').style.transform = "rotateY(0deg)";
+                    document.querySelector('.back_16').style.transform = "rotateY(180deg)";
+                }, 2000)
+            };
+        }
     }
 
     fetch('tsconfig.json')
@@ -275,10 +332,10 @@ function listCards() {
 
 
         let arr = [];
-
+        calc();
         function creatArr() {
             for (let i = 1; i <= 16; i++) {
-                arr.push([taskGoods[i].name, taskGoods[i].cost]);
+                arr.push([taskGoods[i].name, taskGoods[i].price]);
             }
         }
 

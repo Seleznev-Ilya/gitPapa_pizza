@@ -134,7 +134,7 @@
     "name": "Балясина",
     "composition": {
       "cheese": 1,
-      "meat": 2,
+      "meat": 0,
       "tomato": 4,
       "onion": 8,
       "basis": "basis"
@@ -146,7 +146,7 @@
     "composition": {
       "cheese": 1,
       "meat": 2,
-      "tomato": 4,
+      "tomato": 0,
       "onion": 8,
       "basis": "basis"
 
@@ -169,7 +169,7 @@
       "cheese": 1,
       "meat": 2,
       "tomato": 4,
-      "onion": 8,
+      "onion": 0,
       "basis": "basis"
 
     }
