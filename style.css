@@ -1,0 +1,336 @@
+* {
+    font-family: 'Sriracha', cursive;
+}
+
+.container, .container2{
+    padding: 10px;
+    display: block;
+    max-width: 86%;
+    margin: 10px auto;
+    font-size: 20px;
+}
+
+.goods_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.goods_wrapper_item {
+    /*display: inline-block;*/
+    min-width: 25%;
+    margin: 11px;
+    padding: 5px;
+    min-height: 200px;
+    background-color: rgba(200,190,100,.7);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.goods_wrapper_item:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    margin: 10.5px;
+}
+
+
+
+
+/*____________________________________________________________________*/
+
+h1 {
+    text-align: center;
+}
+
+#test {
+    transition: 0.7s;
+    max-width: 360px;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+#test .item1, #test .item2 {
+    box-sizing: border-box;
+    height: 40px;
+    width: 8em;
+    vertical-align: middle;
+    text-align: center;
+    -moz-box-sizing: content-box;
+    background-color: aliceblue;
+
+}
+
+#test .item1 {
+    border-radius: 0 20px 0 18px;
+    border: 1px solid goldenrod;
+}
+
+#test .item2 {
+    border-radius: 20px 0 18px 0;
+    border: 1px solid goldenrod;
+}
+
+.item1 span {
+    text-decoration: none;
+    display: inline-block;
+    transform: translateY(9px);
+    color: brown;
+    background-color: aliceblue;
+    font-family: 'Raleway', sans-serif;
+}
+
+.item2 span {
+    text-decoration: none;
+    display: inline-block;
+    transform: translateY(9px);
+    color: cornflowerblue;
+    background-color: aliceblue;
+    font-family: 'Raleway', sans-serif;
+}
+
+.wrapper_test {
+    position: relative;
+}
+
+#buttonH1 {
+    font-family: 'Raleway', sans-serif;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    max-width: 390px;
+    margin: 20px auto 0;
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: orange;
+    padding: 15px;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 100px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+#buttonH1 span {
+    position: relative;
+    pointer-events: none;
+}
+
+#buttonH1::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--w);
+    height: var(--w);
+    background: radial-gradient(circle closest-side, sandybrown, transparent);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 3s ease;
+    -moz-transition: all 3s ease;
+    -o-transition: all 3s ease;
+    transition: all 3s ease;
+}
+
+#buttonH1:hover::before {
+    --w: 450px;
+}
+
+/*_________________header*/
+
+
+header {
+    background-image: url("img/back.jpg");
+    background-size: cover;
+
+    transition-timing-function: ease-out;
+    transition-duration: 1.7s;
+    margin: 33px 0;
+    padding: 10px;
+
+}
+
+body {
+    height: 97vh;
+    background-image: url("img/11.jpg");
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position-y: bottom;
+    background-position-x: right;
+}
+
+/*______________________________________________________________style2*/
+.container2 img {
+    height: 45px;
+    width: 45px;
+}
+
+.span {
+    font-size: 26px;
+}
+
+.container2 div {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.span {
+    margin: 0 0 0 5px;
+
+}
+
+.span:nth-child(3) {
+    color: darkslateblue;
+}
+
+.span:nth-child(2) {
+    text-shadow: 1px 1px 2px black;
+}
+
+.container2 img {
+    border-radius: 10px;
+
+}
+
+.container2 img, .span {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.container2 .line {
+    background: linear-gradient(90deg, rgba(218, 107, 11, 1) 0%, rgba(211, 136, 22, 1) 35%, rgba(224, 255, 0, .2) 100%);
+    display: block;
+    margin: 5px;
+    border: 1px solid orange;
+    border-radius: 20px;
+    padding: 4px;
+}
+
+.name, .price {
+    background-color: grey;
+    color: white;
+    margin: 5px 3px;
+    padding: 5px 7px;
+    border: 2px solid darkolivegreen;
+    box-shadow: 2px 2px 5px grey;
+    border-radius: 17px;
+    cursor: pointer;
+}
+
+.btnWrapper {
+    padding-bottom: 10px;
+    border-bottom: 2px solid grey;
+    text-align: right;
+    width: 70%;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: flex-end;
+
+
+}
+
+/*______________________________________________________________style3*/
+
+
+.front, .back{
+    border-radius: 10px;
+    position: absolute;
+    left:0;
+    right:0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .733s;
+    backface-visibility: hidden;
+    color: black;
+    font: bold 24px/1.5em sans-serif, serif;
+}
+.card{
+    position: relative;
+    margin: 50px 20px 50px;
+    padding: 10px;
+    height: 380px;
+    width: 300px;
+    perspective: 800px;
+    text-align: left;
+}
+
+.front{
+    /*position: relative;*/
+    background:  linear-gradient(to bottom left, transparent, orange);
+    border: 1px solid #0056b3;
+    box-shadow: 1px 1px 7px grey;
+    border-radius: 10px;
+
+}
+.front:hover{
+    box-shadow: 3px 3px 7px grey;
+
+}
+.back{
+    /*background-color: transparent;*/
+    background:  linear-gradient(to bottom , orange, transparent);
+    border: 1px solid #0056b3;
+    border-radius: 10px;
+    background-size: cover;
+    transform: rotateY(180deg);
+    box-shadow: 3px 3px 11px #666666;
+
+}
+.backImg{
+    height: 80%;
+    width: 100%;
+    display: block;
+    background-size: cover;
+}
+
+.btnForm{
+    border-radius: 10px;
+    position: absolute;
+    bottom: 5px;
+    right: calc(50% - (96px/2));
+}
+.p_name{
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    left: 15%;
+}
+
+input[type="checkbox"]{
+    margin-right: 5px;
+}
+form{
+    position: absolute;
+    top: 57px;
+    left: 50px;
+}
+.priceName{
+    position: absolute;
+    top: 227px;
+    left: 50px;
+}
+.calName{
+    position: absolute;
+    top: 270px;
+    left: 50px;
+}

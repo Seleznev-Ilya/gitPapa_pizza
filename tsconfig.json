@@ -1,0 +1,179 @@
+{
+  "1": {
+    "name": "Пипица",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+    }
+  },
+  "2": {
+    "name": "Хабара",
+    "composition": {
+      "cheese": 1,
+      "meat": 0,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "3": {
+    "name": "Мимозыря",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 0,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "4": {
+    "name": "Хухря",
+    "composition": {
+      "cheese": 0,
+      "meat": 0,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "5": {
+    "name": "Ендовочник",
+    "composition": {
+      "cheese": 0,
+      "meat": 2,
+      "tomato": 0,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "6": {
+    "name": "Яга",
+    "composition": {
+      "cheese": 1,
+      "meat": 0,
+      "tomato": 0,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "7": {
+    "name": "Потиральце",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "8": {
+    "name": "Анчутка",
+    "composition": {
+      "cheese": 0,
+      "meat": 0,
+      "tomato": 0,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "9": {
+    "name": "Козлодер",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "10": {
+    "name": "Пердимонокль",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "11": {
+    "name": "Курвиметр",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "12": {
+    "name": "Брандахлыст",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "13": {
+    "name": "Балясина",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "14": {
+    "name": "Пендельтюр",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "15": {
+    "name": "Пимпочка",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  },
+  "16": {
+    "name": "Вувузела",
+    "composition": {
+      "cheese": 1,
+      "meat": 2,
+      "tomato": 4,
+      "onion": 8,
+      "basis": "basis"
+
+    }
+  }
+}
+
+
