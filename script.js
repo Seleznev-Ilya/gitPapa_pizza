@@ -8,9 +8,17 @@ function calc() {
         let sum = 0;
         for (let i = 0; i < arr.length; i++) {
             sum += taskGoods[keys]['composition'][arr[i]];
+
+            // console.log( taskGoods[keys]['composition'][arr[i]])
         }
-        taskGoods[keys].price = (sum * 33);
-        taskGoods[keys].cal = (sum * 75);
+        if ( sum === 0){
+            taskGoods[keys].price = '(основа) 33';
+            taskGoods[keys].cal = (sum * 75) + 300;
+        } else{
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75) + 300;
+        }
+
 
         if (sum === 7) {
             // obj.conponents.cheese = 1;
@@ -20,9 +28,169 @@ function calc() {
             // taskGoods[keys].cal = (sum * 75);
         }
     }
-    console.log(taskGoods);
+    // console.log(taskGoods);
 }
+function checkBoxCheck() {
 
+    // for (let keys in taskGoods) {
+    //     let arr = ['cheese', 'meat', 'tomato', 'onion'];
+    //     let sum = 0;
+    //     for (let i = 0; i < arr.length; i++) {
+    //         sum += taskGoods[keys]['composition'][arr[i]];
+    //     }
+    // }
+
+    let goodsWrapper = document.querySelector('.goods_wrapper');
+    // for (let i = 0; i < goodsWrapper.children.length; i++) {
+    // let sum1 =0;
+
+    for (let keys in taskGoods) {
+        let arr = ['cheese', 'meat', 'tomato', 'onion'];
+
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+
+            sum += taskGoods[keys]['composition'][arr[i]];
+
+        }
+        // console.log(sum);
+        if (sum === 1) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+
+
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = ( (sum * 75));
+            console.log(taskGoods[keys].price);
+
+        } else if (sum === 2) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        } else if (sum === 3) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 4) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 5) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 6) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 7) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 8) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 9) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 10) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 12) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 14) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 15) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 11) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 13) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            console.log(sum);
+            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].cal = (sum * 75);
+        }else if (sum === 0) {
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            console.log(sum);
+            // taskGoods[keys].price = 25;
+            // taskGoods[keys].cal =  300;
+        }
+
+
+    }
+
+}
 function createCards() {
     backG.style.backgroundPositionY = 'bottom';
     backG.style.backgroundPositionX = 'center';
@@ -46,9 +214,9 @@ function createCards() {
 
         function createSearch() {
             let btnWrapperGrid = document.createElement('div');
-            setTimeout(()=>{
+            setTimeout(() => {
                 btnWrapperGrid.classList.add('btnWrapperGrid1');
-            },20);
+            }, 20);
             btnWrapperGrid.classList.add('btnWrapperGrid');
 
             let btnNameGrid = document.createElement('div');
@@ -79,6 +247,7 @@ function createCards() {
             btnWrapperGrid.append(btnNameGrid);
             globalContainer.append(btnWrapperGrid);
         }
+
         createSearch();
 
 
@@ -151,16 +320,18 @@ function createCards() {
 
                     let br1 = document.createElement('br');
                     form.append(br1);
+
                 }
+
 
                 let priceName = document.createElement('span');
                 priceName.classList.add('priceName');
-                priceName.innerText = `Цена: ${taskGoods[list]['price']}`;
+                priceName.innerText = `Цена: ${taskGoods[list]['price']} грн`;
                 front.append(priceName);
 
                 let calName = document.createElement('span');
                 calName.classList.add('calName');
-                calName.innerText = `Калории: ${taskGoods[list]['cal']} грн`;
+                calName.innerText = `Калории: ${taskGoods[list]['cal']}`;
                 front.append(calName);
 
                 let button = document.createElement('button');
@@ -182,12 +353,80 @@ function createCards() {
         }
 
         globalContainer.append(container);
+
         calc();
+
         drow();
+        checkBoxCheck();
         rotate();
 
-        function checBox(a) {
+        // function checkBoxCheck() {
+        //
+        //     // for (let keys in taskGoods) {
+        //     //     let arr = ['cheese', 'meat', 'tomato', 'onion'];
+        //     //     let sum = 0;
+        //     //     for (let i = 0; i < arr.length; i++) {
+        //     //         sum += taskGoods[keys]['composition'][arr[i]];
+        //     //     }
+        //     // }
+        //
+        //     let goodsWrapper = document.querySelector('.goods_wrapper');
+        //     // for (let i = 0; i < goodsWrapper.children.length; i++) {
+        //         // let sum1 =0;
+        //
+        //         for (let keys in taskGoods) {
+        //             let arr = ['cheese', 'meat', 'tomato', 'onion'];
+        //
+        //             let sum = 0;
+        //             for (let i = 0; i < arr.length; i++) {
+        //
+        //                 sum += taskGoods[keys]['composition'][arr[i]];
+        //
+        //             }
+        //             // console.log(sum);
+        //             if (sum === 1) {
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+        //
+        //
+        //                 taskGoods[keys].price = (sum * 33);
+        //                 taskGoods[keys].cal = (sum * 75);
+        //                 console.log(taskGoods[keys].price);
+        //
+        //             } else if (sum === 15) {
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+        //                 console.log(sum);
+        //                 taskGoods[keys].price = (sum * 33);
+        //                 taskGoods[keys].cal = (sum * 75);
+        //             }
+        //             // console.log( goodsWrapper.children[keys]);
+        //
+        //         }
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //     // }
+        //
+        //
+        //     // console.log(goodsWrapper.children);
+        //     // goodsWrapper.rows[i]
+        //     // console.log(formCheck);
+        //
+        // }
 
+
+
+        function checBox(a) {
+            //    check boxes and change price and cal
             for (let i = 0; i < 4; i++) {
                 let arr = ['cheese', 'meat', 'tomato', 'onion'];
                 if (a[arr[i]].checked) {
@@ -405,11 +644,10 @@ function listCards() {
 
 
             let btnWrapper = document.createElement('div');
-            setTimeout(()=>{
+            setTimeout(() => {
                 btnWrapper.classList.add('btnWrapper1');
-            },20);
+            }, 20);
             btnWrapper.classList.add('btnWrapper');
-
 
 
             let btnName = document.createElement('div');
@@ -532,8 +770,6 @@ function listCards() {
         taskGoods = obj;
         fub1();
     });
-
-
 }
 
 

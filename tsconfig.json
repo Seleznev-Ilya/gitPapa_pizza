@@ -3,19 +3,19 @@
     "name": "Пипица",
     "composition": {
       "cheese": 1,
-      "meat": 2,
-      "tomato": 4,
-      "onion": 8,
+      "meat": 0,
+      "tomato": 0,
+      "onion": 0,
       "basis": "basis"
     }
   },
   "2": {
     "name": "Хабара",
     "composition": {
-      "cheese": 1,
+      "cheese": 0,
       "meat": 0,
-      "tomato": 4,
-      "onion": 8,
+      "tomato": 0,
+      "onion": 0,
       "basis": "basis"
 
     }
@@ -37,7 +37,7 @@
       "cheese": 0,
       "meat": 0,
       "tomato": 4,
-      "onion": 8,
+      "onion": 0,
       "basis": "basis"
 
     }
