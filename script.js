@@ -12,10 +12,10 @@ function calc() {
             // console.log( taskGoods[keys]['composition'][arr[i]])
         }
         if ( sum === 0){
-            taskGoods[keys].price = '(основа) 33';
+            taskGoods[keys].price = 0 + 33;
             taskGoods[keys].cal = (sum * 75) + 300;
         } else{
-            taskGoods[keys].price = (sum * 33);
+            taskGoods[keys].price = (sum * 33) + 33;
             taskGoods[keys].cal = (sum * 75) + 300;
         }
 
@@ -326,7 +326,13 @@ function createCards() {
 
                 let priceName = document.createElement('span');
                 priceName.classList.add('priceName');
-                priceName.innerText = `Цена: ${taskGoods[list]['price']} грн`;
+                if (taskGoods[list]['price'] === 33){
+                    priceName.innerText = `Цена: (основа) ${taskGoods[list]['price']} грн`;
+                } else {
+                    priceName.innerText = `Цена: ${taskGoods[list]['price']} грн`;
+                }
+
+
                 front.append(priceName);
 
                 let calName = document.createElement('span');
