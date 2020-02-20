@@ -348,6 +348,14 @@ body {
     border-radius: 10px;
 
 }
+.front_1{
+    /*position: relative;*/
+    background:  linear-gradient(to bottom left , transparent, coral);
+    border: 1px solid #0056b3;
+    box-shadow: 1px 1px 7px grey;
+    border-radius: 10px;
+
+}
 .front:hover{
     box-shadow: 3px 3px 7px grey;
 
