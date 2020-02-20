@@ -1,11 +1,23 @@
 'use strict';
 let backG = document.querySelector('header');
+
+function basket(){
+    let basket = document.createElement('div');
+    basket.classList.add('basket');
+    // basket.style.right = -400 + 'px' ;
+    document.body.children[0].append(basket);
+
+
+}
+basket();
+
 let taskGoodsNew = {};
 let taskGoods;
-function  fub1(){
+
+function fub1() {
     taskGoods = Object.assign({}, taskGoodsNew);
-    console.log( taskGoods);
 }
+
 fetch('tsconfig.json')
     .then(function (response) {
         return response.json();
@@ -13,10 +25,6 @@ fetch('tsconfig.json')
     taskGoodsNew = obj;
     fub1();
 });
-
-
-
-
 
 function calc() {
     for (let keys in taskGoods) {
@@ -34,7 +42,9 @@ function calc() {
         }
     }
 }
+
 function createCards() {
+
     function checkBoxCheck() {
         let goodsWrapper = document.querySelector('.goods_wrapper');
         for (let keys in taskGoods) {
@@ -126,6 +136,7 @@ function createCards() {
             }
         }
     }
+
     backG.style.backgroundPositionY = 'bottom';
     backG.style.backgroundPositionX = 'center';
 
@@ -140,7 +151,6 @@ function createCards() {
     up();
 
     function fub1() {
-
         let container = document.createElement('div');
         container.classList.add("container");
 
@@ -182,20 +192,6 @@ function createCards() {
 
         createSearch();
 
-
-        document.querySelector('.nameGrid').onclick = function () {
-            // for ( let keys in taskGoods){
-            //     let arr = ['cheese', 'meat', 'tomato', 'onion'];
-            //     let sum = 0;
-            //     for (let i = 0; i < arr.length; i++){
-            //         sum += taskGoods[keys]['composition'][arr[i]];
-            //
-            //     }
-            //     console.log(sum);
-            // }
-        };
-
-
         function draw() {
             let wrapper = document.createElement('div');
             wrapper.classList.add("goods_wrapper");
@@ -235,7 +231,6 @@ function createCards() {
                 form.classList.add(`form_${list}`);
                 form.name = `${list}`;
 
-
                 for (let i = 0; i < 4; i++) {
 
                     let arr = ['cheese', 'meat', 'tomato', 'onion'];
@@ -252,7 +247,6 @@ function createCards() {
 
                     let br1 = document.createElement('br');
                     form.append(br1);
-
                 }
 
 
@@ -263,8 +257,6 @@ function createCards() {
                 } else {
                     priceName.innerText = `Цена: ${taskGoods[list]['price']} грн`;
                 }
-
-
                 front.append(priceName);
 
                 let calName = document.createElement('span');
@@ -293,12 +285,11 @@ function createCards() {
                 wrapper.append(item);
                 counterItems++;
             }
-
         }
 
         globalContainer.append(container);
+
         function checBox(a) {
-            //    check boxes and change price and cal
             let arr = ['cheese', 'meat', 'tomato', 'onion'];
             if (a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
@@ -322,7 +313,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (!a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+            } else if (!a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 0;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 4;
@@ -333,7 +324,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (!a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+            } else if (!a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 0;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 0;
@@ -344,7 +335,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
+            } else if (a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 2;
                 taskGoods[a.name]['composition']['tomato'] = 0;
@@ -355,7 +346,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+            } else if (a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 3;
@@ -366,7 +357,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+            } else if (a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 0;
@@ -377,7 +368,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+            } else if (a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 2;
                 taskGoods[a.name]['composition']['tomato'] = 0;
@@ -388,7 +379,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
+            } else if (a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 4;
@@ -399,7 +390,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (!a['cheese'].checked && a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+            } else if (!a['cheese'].checked && a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 0;
                 taskGoods[a.name]['composition']['meat'] = 2;
                 taskGoods[a.name]['composition']['tomato'] = 4;
@@ -410,7 +401,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (!a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+            } else if (!a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 0;
                 taskGoods[a.name]['composition']['meat'] = 2;
                 taskGoods[a.name]['composition']['tomato'] = 0;
@@ -421,7 +412,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (!a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
+            } else if (!a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 0;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 4;
@@ -432,7 +423,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
+            } else if (a['cheese'].checked && a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 2;
                 taskGoods[a.name]['composition']['tomato'] = 4;
@@ -443,7 +434,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (a['cheese'].checked && a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+            } else if (a['cheese'].checked && a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 1;
                 taskGoods[a.name]['composition']['meat'] = 2;
                 taskGoods[a.name]['composition']['tomato'] = 4;
@@ -454,7 +445,7 @@ function createCards() {
                 }
                 taskGoods[a.name].price = (sum * 33) + 33;
                 taskGoods[a.name].cal = (sum * 75) + 300;
-            }else if (!a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
+            } else if (!a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
                 taskGoods[a.name]['composition']['cheese'] = 0;
                 taskGoods[a.name]['composition']['meat'] = 0;
                 taskGoods[a.name]['composition']['tomato'] = 0;
@@ -463,8 +454,8 @@ function createCards() {
                 for (let i = 0; i < arr.length; i++) {
                     sum += taskGoods[a.name]['composition'][arr[i]];
                 }
-                taskGoods[a.name].price =  33;
-                taskGoods[a.name].cal =  300;
+                taskGoods[a.name].price = 33;
+                taskGoods[a.name].cal = 300;
             }
 
             setTimeout(() => {
@@ -476,13 +467,11 @@ function createCards() {
             }, 2700)
 
         }
+
         calc();
         draw();
         checkBoxCheck();
         rotate();
-
-
-        // console.log(taskGoods['1'].price);
         function rotate() {
             document.querySelector('.btnForm_1').onclick = function () {
                 checBox(document.querySelector('.front_1 form'));
@@ -513,7 +502,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_4').onclick = function () {
                 checBox(document.querySelector('.front_4 form'));
-
                 document.querySelector('.front_4').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_4').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -523,7 +511,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_5').onclick = function () {
                 checBox(document.querySelector('.front_5 form'));
-
                 document.querySelector('.front_5').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_5').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -533,7 +520,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_6').onclick = function () {
                 checBox(document.querySelector('.front_6 form'));
-
                 document.querySelector('.front_6').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_6').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -543,7 +529,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_7').onclick = function () {
                 checBox(document.querySelector('.front_7 form'));
-
                 document.querySelector('.front_7').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_7').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -553,7 +538,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_8').onclick = function () {
                 checBox(document.querySelector('.front_8  form'));
-
                 document.querySelector('.front_8').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_8').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -563,7 +547,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_9').onclick = function () {
                 checBox(document.querySelector('.front_9 form'));
-
                 document.querySelector('.front_9').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_9').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -573,7 +556,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_10').onclick = function () {
                 checBox(document.querySelector('.front_10 form'));
-
                 document.querySelector('.front_10').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_10').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -583,7 +565,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_11').onclick = function () {
                 checBox(document.querySelector('.front_11 form'));
-
                 document.querySelector('.front_11').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_11').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -593,7 +574,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_12').onclick = function () {
                 checBox(document.querySelector('.front_12 form'));
-
                 document.querySelector('.front_12').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_12').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -603,7 +583,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_13').onclick = function () {
                 checBox(document.querySelector('.front_13 form'));
-
                 document.querySelector('.front_13').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_13').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -613,7 +592,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_14').onclick = function () {
                 checBox(document.querySelector('.front_14 form'));
-
                 document.querySelector('.front_14').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_14').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -623,7 +601,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_15').onclick = function () {
                 checBox(document.querySelector('.front_15 form'));
-
                 document.querySelector('.front_15').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_15').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -633,7 +610,6 @@ function createCards() {
             };
             document.querySelector('.btnForm_16').onclick = function () {
                 checBox(document.querySelector('.front_16 form'));
-
                 document.querySelector('.front_16').style.transform = "rotateY(180deg)";
                 document.querySelector('.back_16').style.transform = "rotateY(360deg)";
                 setTimeout(() => {
@@ -643,18 +619,11 @@ function createCards() {
             };
         }
     }
-    fub1();
-    // fetch('tsconfig.json')
-    //     .then(function (responseq) {
-    //         return responseq.json();
-    //     }).then(function (obj) {
-    //     taskGoods = obj;
-    //     fub1();
-    // });
 
-    // let taskGoodsNew = Object.assign({}, taskGoods);
-    // console.log( taskGoodsNew);
+    fub1();
+
 }
+
 function listCards() {
     function up() {
         setTimeout(function () {
@@ -669,8 +638,6 @@ function listCards() {
     function fub1() {
         backG.style.backgroundPositionY = 'top';
         backG.style.backgroundPositionX = 'center';
-
-
         let arr = [];
         calc();
 
@@ -686,35 +653,26 @@ function listCards() {
         container.classList.add('container2');
 
         function startList() {
-
-
             let btnWrapper = document.createElement('div');
             setTimeout(() => {
                 btnWrapper.classList.add('btnWrapper1');
             }, 20);
             btnWrapper.classList.add('btnWrapper');
 
-
             let btnName = document.createElement('div');
             btnName.classList.add('name');
             btnName.innerText = 'Название';
             btnWrapper.append(btnName);
 
-
             let btnPrice = document.createElement('div');
             btnPrice.classList.add('price');
             btnPrice.innerText = 'Цена';
             btnWrapper.append(btnPrice);
-
             globalContainer.append(btnWrapper);
-
             draw();
-
-
         }
 
         startList();
-
 
         function creatPizza(i) {
             let line = document.createElement('div');
@@ -732,14 +690,11 @@ function listCards() {
 
             let price = document.createElement('span');
             price.classList.add('span');
-
             price.innerHTML = `${arr[i][1]} grn`;
             line.append(price);
-
             container.append(line);
 
         }
-
 
         function draw() {
             for (let i = 0; i < 16; i++) {
@@ -748,8 +703,6 @@ function listCards() {
         }
 
         globalContainer.append(container);
-
-
         document.querySelector('.name').onclick = sortArrName;
         document.querySelector('.price').onclick = sortArrPrice;
 
@@ -757,15 +710,11 @@ function listCards() {
         let i2 = 0;
 
         function sortArrName() {
-
             container.innerHTML = '';
-
-
             if (i1 === 0) {
                 arr.sort(function (a, b) {
                     b = b[0];
                     a = a[0];
-
                     return a > b ? 1 : -1;
                 });
                 i1 += 1;
@@ -774,23 +723,19 @@ function listCards() {
                 arr.sort(function (a, b) {
                     b = b[0];
                     a = a[0];
-
                     return a < b ? 1 : -1;
                 });
                 i1 -= 1;
                 draw();
             }
-
         }
 
         function sortArrPrice() {
             container.innerHTML = '';
-
             if (i2 === 0) {
                 arr.sort(function (a, b) {
                     b = b[1];
                     a = a[1];
-
                     return a > b ? 1 : -1;
                 });
                 i2 += 1;
@@ -799,7 +744,6 @@ function listCards() {
                 arr.sort(function (a, b) {
                     b = b[1];
                     a = a[1];
-
                     return a < b ? 1 : -1;
                 });
                 i2 -= 1;
@@ -807,14 +751,8 @@ function listCards() {
             }
         }
     }
+
     fub1();
-    // fetch('tsconfig.json')
-    //     .then(function (response) {
-    //         return response.json();
-    //     }).then(function (obj) {
-    //     taskGoods = obj;
-    //     fub1();
-    // });
 }
 
 
