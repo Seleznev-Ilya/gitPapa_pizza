@@ -384,7 +384,7 @@ body {
     position: absolute;
     bottom: 43px;
     right: calc(50% - (180px/2));
-    background:  linear-gradient(to bottom , olivedrab, yellowgreen);
+    background:  linear-gradient(to bottom , greenyellow, yellowgreen);
 
     cursor: pointer;
 }
