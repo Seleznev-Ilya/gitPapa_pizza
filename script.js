@@ -275,7 +275,7 @@ function createCards() {
                 let button = document.createElement('button');
                 button.classList.add(`btnForm_${counterItems}`);
                 button.classList.add(`btnForm`);
-                button.innerText = "Выбрать";
+                button.innerText = "Обноваит";
 
                 let br = document.createElement('br');
                 front.append(button);
