@@ -1,8 +1,8 @@
 {
   "1": {
-    "name": "Пипица",
+    "name": " Сделай Сам ! ",
     "composition": {
-      "cheese": 1,
+      "cheese": 0,
       "meat": 0,
       "tomato": 0,
       "onion": 0,
@@ -10,11 +10,11 @@
     }
   },
   "2": {
-    "name": "Хабара",
+    "name": "Пипица",
     "composition": {
-      "cheese": 0,
+      "cheese": 1,
       "meat": 0,
-      "tomato": 0,
+      "tomato": 4,
       "onion": 0,
       "basis": "basis"
 
