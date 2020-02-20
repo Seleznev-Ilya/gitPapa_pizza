@@ -1,6 +1,22 @@
 'use strict';
 let backG = document.querySelector('header');
-let taskGoods = {};
+let taskGoodsNew = {};
+let taskGoods;
+function  fub1(){
+    taskGoods = Object.assign({}, taskGoodsNew);
+    console.log( taskGoods);
+}
+fetch('tsconfig.json')
+    .then(function (response) {
+        return response.json();
+    }).then(function (obj) {
+    taskGoodsNew = obj;
+    fub1();
+});
+
+
+
+
 
 function calc() {
     for (let keys in taskGoods) {
@@ -8,193 +24,110 @@ function calc() {
         let sum = 0;
         for (let i = 0; i < arr.length; i++) {
             sum += taskGoods[keys]['composition'][arr[i]];
-
-            // console.log( taskGoods[keys]['composition'][arr[i]])
         }
-        if ( sum === 0){
-            taskGoods[keys].price = 0 + 33;
+        if (sum === 0) {
+            taskGoods[keys].price = 33;
             taskGoods[keys].cal = (sum * 75) + 300;
-        } else{
+        } else {
             taskGoods[keys].price = (sum * 33) + 33;
             taskGoods[keys].cal = (sum * 75) + 300;
         }
-
-
-        if (sum === 7) {
-            // obj.conponents.cheese = 1;
-            // obj.conponents.meat = 2;
-            // obj.conponents.tomato = 4;
-            // taskGoods[keys].price = (sum * 33);
-            // taskGoods[keys].cal = (sum * 75);
-        }
     }
-    // console.log(taskGoods);
-}
-function checkBoxCheck() {
-
-    // for (let keys in taskGoods) {
-    //     let arr = ['cheese', 'meat', 'tomato', 'onion'];
-    //     let sum = 0;
-    //     for (let i = 0; i < arr.length; i++) {
-    //         sum += taskGoods[keys]['composition'][arr[i]];
-    //     }
-    // }
-
-    let goodsWrapper = document.querySelector('.goods_wrapper');
-    // for (let i = 0; i < goodsWrapper.children.length; i++) {
-    // let sum1 =0;
-
-    for (let keys in taskGoods) {
-        let arr = ['cheese', 'meat', 'tomato', 'onion'];
-
-        let sum = 0;
-        for (let i = 0; i < arr.length; i++) {
-
-            sum += taskGoods[keys]['composition'][arr[i]];
-
-        }
-        // console.log(sum);
-        if (sum === 1) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-
-
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = ( (sum * 75));
-            console.log(taskGoods[keys].price);
-
-        } else if (sum === 2) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        } else if (sum === 3) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 4) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 5) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 6) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 7) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 8) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 9) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 10) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 12) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 14) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 15) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 11) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 13) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-            console.log(sum);
-            taskGoods[keys].price = (sum * 33);
-            taskGoods[keys].cal = (sum * 75);
-        }else if (sum === 0) {
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-            goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-            console.log(sum);
-            // taskGoods[keys].price = 25;
-            // taskGoods[keys].cal =  300;
-        }
-
-
-    }
-
 }
 function createCards() {
+    function checkBoxCheck() {
+        let goodsWrapper = document.querySelector('.goods_wrapper');
+        for (let keys in taskGoods) {
+            let arr = ['cheese', 'meat', 'tomato', 'onion'];
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += taskGoods[keys]['composition'][arr[i]];
+            }
+            if (sum === 1) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 2) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 3) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 4) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 5) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 6) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 7) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            } else if (sum === 8) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 9) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 10) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 12) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 14) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 15) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 11) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 13) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
+            } else if (sum === 0) {
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
+                goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
+            }
+        }
+    }
     backG.style.backgroundPositionY = 'bottom';
     backG.style.backgroundPositionX = 'center';
-
 
     function up() {
         setTimeout(function () {
@@ -205,7 +138,6 @@ function createCards() {
     }
 
     up();
-
 
     function fub1() {
 
@@ -264,7 +196,7 @@ function createCards() {
         };
 
 
-        function drow() {
+        function draw() {
             let wrapper = document.createElement('div');
             wrapper.classList.add("goods_wrapper");
             container.append(wrapper);
@@ -326,7 +258,7 @@ function createCards() {
 
                 let priceName = document.createElement('span');
                 priceName.classList.add('priceName');
-                if (taskGoods[list]['price'] === 33){
+                if (taskGoods[list]['price'] === 33) {
                     priceName.innerText = `Цена: (основа) ${taskGoods[list]['price']} грн`;
                 } else {
                     priceName.innerText = `Цена: ${taskGoods[list]['price']} грн`;
@@ -359,91 +291,192 @@ function createCards() {
         }
 
         globalContainer.append(container);
+        function checBox(a) {
+            //    check boxes and change price and cal
+            let arr = ['cheese', 'meat', 'tomato', 'onion'];
+            if (a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            } else if (!a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (!a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 4;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (!a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 3;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 4;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (!a['cheese'].checked && a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 4;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (!a['cheese'].checked && a['meat'].checked && !a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (!a['cheese'].checked && !a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 4;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && a['meat'].checked && a['tomato'].checked && a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 4;
+                taskGoods[a.name]['composition']['onion'] = 8;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (a['cheese'].checked && a['meat'].checked && a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 1;
+                taskGoods[a.name]['composition']['meat'] = 2;
+                taskGoods[a.name]['composition']['tomato'] = 4;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price = (sum * 33) + 33;
+                taskGoods[a.name].cal = (sum * 75) + 300;
+            }else if (!a['cheese'].checked && !a['meat'].checked && !a['tomato'].checked && !a['onion'].checked) {
+                taskGoods[a.name]['composition']['cheese'] = 0;
+                taskGoods[a.name]['composition']['meat'] = 0;
+                taskGoods[a.name]['composition']['tomato'] = 0;
+                taskGoods[a.name]['composition']['onion'] = 0;
+                let sum = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    sum += taskGoods[a.name]['composition'][arr[i]];
+                }
+                taskGoods[a.name].price =  33;
+                taskGoods[a.name].cal =  300;
+            }
 
+            setTimeout(() => {
+                document.querySelector('.container').innerHTML = '';
+
+                draw();
+                checkBoxCheck();
+                rotate();
+            }, 2700)
+
+        }
         calc();
-
-        drow();
+        draw();
         checkBoxCheck();
         rotate();
 
-        // function checkBoxCheck() {
-        //
-        //     // for (let keys in taskGoods) {
-        //     //     let arr = ['cheese', 'meat', 'tomato', 'onion'];
-        //     //     let sum = 0;
-        //     //     for (let i = 0; i < arr.length; i++) {
-        //     //         sum += taskGoods[keys]['composition'][arr[i]];
-        //     //     }
-        //     // }
-        //
-        //     let goodsWrapper = document.querySelector('.goods_wrapper');
-        //     // for (let i = 0; i < goodsWrapper.children.length; i++) {
-        //         // let sum1 =0;
-        //
-        //         for (let keys in taskGoods) {
-        //             let arr = ['cheese', 'meat', 'tomato', 'onion'];
-        //
-        //             let sum = 0;
-        //             for (let i = 0; i < arr.length; i++) {
-        //
-        //                 sum += taskGoods[keys]['composition'][arr[i]];
-        //
-        //             }
-        //             // console.log(sum);
-        //             if (sum === 1) {
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = false;
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = false;
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = false;
-        //
-        //
-        //                 taskGoods[keys].price = (sum * 33);
-        //                 taskGoods[keys].cal = (sum * 75);
-        //                 console.log(taskGoods[keys].price);
-        //
-        //             } else if (sum === 15) {
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[0].checked = true;
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[3].checked = true;
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[6].checked = true;
-        //                 goodsWrapper.children[keys - 1].firstElementChild.lastElementChild.childNodes[9].checked = true;
-        //                 console.log(sum);
-        //                 taskGoods[keys].price = (sum * 33);
-        //                 taskGoods[keys].cal = (sum * 75);
-        //             }
-        //             // console.log( goodsWrapper.children[keys]);
-        //
-        //         }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //     // }
-        //
-        //
-        //     // console.log(goodsWrapper.children);
-        //     // goodsWrapper.rows[i]
-        //     // console.log(formCheck);
-        //
-        // }
 
-
-
-        function checBox(a) {
-            //    check boxes and change price and cal
-            for (let i = 0; i < 4; i++) {
-                let arr = ['cheese', 'meat', 'tomato', 'onion'];
-                if (a[arr[i]].checked) {
-                    console.log(a.name);
-                    // a[arr[i]]
-                }
-            }
-
-
-        }
-
+        // console.log(taskGoods['1'].price);
         function rotate() {
             document.querySelector('.btnForm_1').onclick = function () {
                 checBox(document.querySelector('.front_1 form'));
@@ -604,18 +637,18 @@ function createCards() {
             };
         }
     }
+    fub1();
+    // fetch('tsconfig.json')
+    //     .then(function (responseq) {
+    //         return responseq.json();
+    //     }).then(function (obj) {
+    //     taskGoods = obj;
+    //     fub1();
+    // });
 
-    fetch('tsconfig.json')
-        .then(function (responseq) {
-            return responseq.json();
-        }).then(function (obj) {
-        taskGoods = obj;
-        fub1();
-    });
-
-
+    // let taskGoodsNew = Object.assign({}, taskGoods);
+    // console.log( taskGoodsNew);
 }
-
 function listCards() {
     function up() {
         setTimeout(function () {
@@ -768,14 +801,14 @@ function listCards() {
             }
         }
     }
-
-    fetch('tsconfig.json')
-        .then(function (response) {
-            return response.json();
-        }).then(function (obj) {
-        taskGoods = obj;
-        fub1();
-    });
+    fub1();
+    // fetch('tsconfig.json')
+    //     .then(function (response) {
+    //         return response.json();
+    //     }).then(function (obj) {
+    //     taskGoods = obj;
+    //     fub1();
+    // });
 }
 
 

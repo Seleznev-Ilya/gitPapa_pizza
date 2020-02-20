@@ -1,7 +1,14 @@
 * {
     font-family: 'Sriracha', cursive;
 }
-
+.containerHead{
+    padding: 10px;
+    display: block;
+    max-width: 84%;
+    margin: 10px auto;
+    font-size: 20px;
+    font-family:'Sriracha', sans-serif, Arial;
+}
 .container, .container2{
     padding: 10px;
     display: block;
