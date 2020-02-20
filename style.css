@@ -441,6 +441,7 @@ form{
     text-align: center;
 }
 .basket{
+    display: none;
     border: 7px solid transparent;
     transition: 1s;
     transition-timing-function: ease-out;
