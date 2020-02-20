@@ -383,8 +383,9 @@ body {
     border: 1px solid grey;
     position: absolute;
     bottom: 43px;
-    right: calc(50% - (160px/2));
-    background-color: lightblue;
+    right: calc(50% - (180px/2));
+    background:  linear-gradient(to bottom , olivedrab, yellowgreen);
+
     cursor: pointer;
 }
 .buttonBuy{
@@ -392,7 +393,8 @@ body {
     position: absolute;
     bottom: 4px;
     right: calc(50% - 37px);
-    background-color: olivedrab;
+    background:  linear-gradient(to top , olivedrab, yellowgreen);
+
     cursor: pointer;
     border: 1px solid grey;
 
