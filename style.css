@@ -379,11 +379,25 @@ body {
 }
 
 .btnForm{
-    border-radius: 10px;
+    border-radius: 7px;
+    border: 1px solid grey;
     position: absolute;
-    bottom: 5px;
-    right: calc(50% - (96px/2));
+    bottom: 43px;
+    right: calc(50% - (160px/2));
+    background-color: lightblue;
+    cursor: pointer;
 }
+.buttonBuy{
+    border-radius: 5px;
+    position: absolute;
+    bottom: 4px;
+    right: calc(50% - 37px);
+    background-color: olivedrab;
+    cursor: pointer;
+    border: 1px solid grey;
+
+}
+
 .p_name{
     font-size: 18px;
     position: absolute;
@@ -396,7 +410,7 @@ input[type="checkbox"]{
     cursor: pointer;
 
 }
-button{
+.front button, button{
     cursor: pointer;
 }
 form{

@@ -272,13 +272,19 @@ function createCards() {
                 calName.innerText = `Калории: ${taskGoods[list]['cal']}`;
                 front.append(calName);
 
+                let buttonBuy = document.createElement('button');
+                buttonBuy.classList.add(`buttonBuy_${counterItems}`);
+                buttonBuy.classList.add(`buttonBuy`);
+                buttonBuy.innerText = "Купить";
+
                 let button = document.createElement('button');
                 button.classList.add(`btnForm_${counterItems}`);
                 button.classList.add(`btnForm`);
-                button.innerText = "Обноваит";
+                button.innerText = "Обноваить цену";
 
                 let br = document.createElement('br');
                 front.append(button);
+                front.append(buttonBuy);
                 front.append(br);
                 front.append(form);
 
